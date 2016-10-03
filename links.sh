@@ -8,7 +8,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="bash_profile bashrc git-completion.bash gitconfig lein tmux.conf vim viminfo vimrc"
+files="bash_profile bashrc gitconfig lein tmux.conf vim viminfo vimrc"
 
 ######### 
 
