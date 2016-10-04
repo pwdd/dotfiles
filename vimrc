@@ -16,6 +16,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'https://github.com/derekwyatt/vim-scala.git'
 
 call plug#end()
 
