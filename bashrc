@@ -14,3 +14,4 @@ export PATH="/usr/local/bin:$PATH"
 
 alias ls='ls -Gh'
 alias be="bundle exec"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
