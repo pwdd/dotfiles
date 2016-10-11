@@ -17,6 +17,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/derekwyatt/vim-scala.git'
+Plug 'https://github.com/scrooloose/syntastic'
 
 call plug#end()
 
@@ -86,3 +87,15 @@ fun! TrimWhitespace()
 endfun
 
 :noremap <Leader>w :call TrimWhitespace()<CR>
+
+" Syntastic
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
