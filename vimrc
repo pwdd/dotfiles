@@ -17,7 +17,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/derekwyatt/vim-scala.git'
-Plug 'https://github.com/scrooloose/syntastic'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
@@ -33,11 +33,11 @@ syntax enable
 set tabstop=2
 set expandtab
 set shiftwidth=2
-set tw=80
+set tw=120
 set number
 set background=dark
 let g:solarized_termcolors=256
-colorscheme solarized 
+colorscheme solarized
 
 " do not create swap files
 set noswapfile
@@ -51,7 +51,7 @@ set backspace=indent,eol,start
 " Highlight current pane with a 80 char board delimitation
 augroup BgHighlight
   autocmd!
-  autocmd WinEnter * set colorcolumn=80
+  autocmd WinEnter * set colorcolumn=120
   autocmd WinLeave * set colorcolumn=0
 augroup END
 
@@ -63,7 +63,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " highlight whitespaces
 function! MatchTrailingWhitespace()
-    call matchadd('Whitespace', '\v\s+$')
+  call matchadd('Whitespace', '\v\s+$')
 endfunction
 
 augroup whitespace_detect
@@ -77,25 +77,20 @@ hi Whitespace ctermfg=red ctermbg=red
 set vb t_vb=
 
 " 80 char column
-set colorcolumn=80
+set colorcolumn=120
 
 " Trim whitespaces on empty lines
 fun! TrimWhitespace()
   let l:save = winsaveview()
-  %s/\s\+$//e
-  call winrestview(l:save)
+   %s/\s\+$//e
+   call winrestview(l:save)
 endfun
 
 :noremap <Leader>w :call TrimWhitespace()<CR>
 
-" Syntastic
+" delimitMate
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
+" markdown
+let g:vim_markdown_folding_disabled = 1
