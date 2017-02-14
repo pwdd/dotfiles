@@ -18,6 +18,9 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'https://github.com/derekwyatt/vim-scala.git'
 Plug 'pangloss/vim-javascript'
+Plug 'derekwyatt/vim-scala'
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -94,3 +97,9 @@ let delimitMate_expand_space = 1
 
 " markdown
 let g:vim_markdown_folding_disabled = 1
+
+" vim-scala
+let g:scala_scaladoc_indent = 1
+
+" copy to clipboard from vim
+ set clipboard=unnamed
