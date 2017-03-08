@@ -21,6 +21,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'derekwyatt/vim-scala'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -103,3 +104,9 @@ let g:scala_scaladoc_indent = 1
 
 " copy to clipboard from vim
  set clipboard=unnamed
+
+" controlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
