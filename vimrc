@@ -22,6 +22,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
@@ -39,9 +40,22 @@ set expandtab
 set shiftwidth=2
 set tw=120
 set number
-set background=dark
+
+" solarized
+set t_Co=256
+let g:solarized_termtrans=1
 let g:solarized_termcolors=256
+set background=dark
 colorscheme solarized
+
+" tender
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
+
+" colorscheme tender
+
+let macvim_skip_colorscheme=1
 
 " do not create swap files
 set noswapfile
@@ -109,4 +123,8 @@ let g:scala_scaladoc_indent = 1
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" search
+set incsearch
+set hlsearch
 
