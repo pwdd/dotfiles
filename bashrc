@@ -14,6 +14,8 @@ export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:$JUNIT_HOME/hamcrest-cor
 
 alias ls='ls -Gh'
 alias be="bundle exec"
+alias vim="vi"
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # added by travis gem
