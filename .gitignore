@@ -1,4 +1,4 @@
-**/.DS_Store
+.DS_Store
 lein/repl-history
 pom.xml
 pom.xml.asc
@@ -6,7 +6,7 @@ pom.xml.asc
 *.class
 /lib/
 /classes/
-/target/
+*/target/*
 /checkouts/
 .lein-deps-sum
 .lein-repl-history
