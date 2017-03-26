@@ -58,10 +58,10 @@ set background=dark
 colorscheme solarized
 
 " tender
-" if (has("termguicolors"))
-"   set termguicolors
-" endif
-" colorscheme tender
+"if (has("termguicolors"))
+"  set termguicolors
+"endif
+"colorscheme tender
 
 " do not create swap files
 set noswapfile
