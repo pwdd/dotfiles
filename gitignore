@@ -2,7 +2,6 @@
 lein/repl-history
 pom.xml.asc
 *.class
-/lib/
 /classes/
 /target/
 */target/*

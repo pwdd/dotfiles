@@ -24,6 +24,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'vim-syntastic/syntastic'
 
 call plug#end()
@@ -42,6 +43,7 @@ set expandtab
 set shiftwidth=2
 set tw=120
 set number
+let base16colorspace=256  " Access colors present in 256 colorspace
 
 " change RED words in solarized theme
 " change search highlight
