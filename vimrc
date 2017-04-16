@@ -125,9 +125,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:scala_scaladoc_indent = 1
 
 " copy to clipboard from vim
-if $TMUX == ''
-  set clipboard=unnamed
-endif
+set clipboard=unnamed
 
 " controlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -274,3 +272,4 @@ let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
 let g:syntastic_scala_checkers=['fsc', 'scalac', 'scalastyle']
 
 nnoremap <Leader>sc :SyntasticCheck<Enter>
+
