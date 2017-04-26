@@ -9,7 +9,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'guns/vim-clojure-static'
 Plug 'Raimondi/delimitMate'
 Plug 'plasticboy/vim-markdown'
-Plug 'altercation/vim-colors-solarized'
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -22,10 +21,15 @@ Plug 'derekwyatt/vim-scala'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'jacoborus/tender.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'ensime/ensime-vim'
+
+" themes
+" Plug 'altercation/vim-colors-solarized'
+Plug 'w0ng/vim-hybrid'
+" Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
@@ -45,25 +49,34 @@ set tw=120
 set number
 let base16colorspace=256  " Access colors present in 256 colorspace
 
+" 120 char column
+set colorcolumn=120
+
+
 " change RED words in solarized theme
 " change search highlight
-augroup vimrc
-  autocmd!
-  autocmd ColorScheme * hi Special ctermbg=NONE ctermfg=136 | hi MatchParen cterm=NONE ctermfg=136 | hi Type ctermfg=61 | hi Search cterm=NONE ctermbg=125
-augroup END
+" augroup vimrc
+"   autocmd!
+"   autocmd ColorScheme * hi Special ctermbg=NONE ctermfg=136 | hi MatchParen cterm=NONE ctermfg=136 | hi Type ctermfg=61 | hi Search cterm=NONE ctermbg=125
+" augroup END
 
 " solarized
-set t_Co=256
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
+" set t_Co=256
+" let g:solarized_termtrans=1
+" let g:solarized_termcolors=256
+" set background=dark
+" colorscheme solarized
 
 " tender
-"if (has("termguicolors"))
-"  set termguicolors
-"endif
-"colorscheme tender
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
+" colorscheme tender
+
+" hybrid theme
+set background=dark
+let g:hybrid_custom_term_colors = 1
+colorscheme hybrid
 
 " do not create swap files
 set noswapfile
@@ -73,6 +86,9 @@ noremap <F4> :r !pbpaste
 
 " Enable backspace key on INSERT mode
 set backspace=indent,eol,start
+
+" disable sounds
+set vb t_vb=
 
 " Highlight current pane with a 120 char board delimitation
 augroup BgHighlight
@@ -98,12 +114,6 @@ augroup whitespace_detect
 augroup END
 
 hi Whitespace ctermfg=red ctermbg=red
-
-" disable sounds
-set vb t_vb=
-
-" 120 char column
-set colorcolumn=120
 
 " Trim whitespaces on empty lines
 fun! TrimWhitespace()
@@ -273,3 +283,7 @@ let g:syntastic_scala_checkers=['fsc', 'scalac', 'scalastyle']
 
 nnoremap <Leader>sc :SyntasticCheck<Enter>
 
+" Ensime
+autocmd BufWritePost *.scala silent :EnTypeCheck
+nnoremap <localleader>t :EnTypeCheck<CR>
+au FileType scala nnoremap <localleader>df :EnDeclaration v<CR>
