@@ -25,21 +25,24 @@ Plug 'itchyny/lightline.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'ensime/ensime-vim'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'https://github.com/bitc/vim-hdevtools.git'
+Plug 'posva/vim-vue'
+Plug 'mattn/emmet-vim'
 
 " themes
-" Plug 'altercation/vim-colors-solarized'
 Plug 'w0ng/vim-hybrid'
-" Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
 
-
+syntax on
 filetype plugin indent on
-syntax enable
 
 " Visual
 set tabstop=2
@@ -52,31 +55,14 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 " 120 char column
 set colorcolumn=120
 
-
-" change RED words in solarized theme
-" change search highlight
-" augroup vimrc
-"   autocmd!
-"   autocmd ColorScheme * hi Special ctermbg=NONE ctermfg=136 | hi MatchParen cterm=NONE ctermfg=136 | hi Type ctermfg=61 | hi Search cterm=NONE ctermbg=125
-" augroup END
-
-" solarized
-" set t_Co=256
-" let g:solarized_termtrans=1
-" let g:solarized_termcolors=256
-" set background=dark
-" colorscheme solarized
-
-" tender
-" if (has("termguicolors"))
-"   set termguicolors
-" endif
-" colorscheme tender
-
 " hybrid theme
 set background=dark
 let g:hybrid_custom_term_colors = 1
 colorscheme hybrid
+
+" folding
+set foldmethod=syntax
+set nofoldenable " open files normal (not fold)
 
 " do not create swap files
 set noswapfile
@@ -90,10 +76,10 @@ set backspace=indent,eol,start
 " disable sounds
 set vb t_vb=
 
-" Highlight current pane with a 120 char board delimitation
+" Highlight current pane with a 100 char board delimitation
 augroup BgHighlight
   autocmd!
-  autocmd WinEnter * set colorcolumn=120
+  autocmd WinEnter * set colorcolumn=100
   autocmd WinLeave * set colorcolumn=0
 augroup END
 
@@ -136,11 +122,6 @@ let g:scala_scaladoc_indent = 1
 
 " copy to clipboard from vim
 set clipboard=unnamed
-
-" controlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 
 " search
 set incsearch
@@ -280,6 +261,7 @@ let g:syntastic_scala_scalastyle_config_file = "/usr/local/etc/scalastyle_config
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
 let g:syntastic_scala_checkers=['fsc', 'scalac', 'scalastyle']
+let g:syntastic_haskell_checkers=['hdevtools']
 
 nnoremap <Leader>sc :SyntasticCheck<Enter>
 
@@ -287,3 +269,57 @@ nnoremap <Leader>sc :SyntasticCheck<Enter>
 autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <localleader>t :EnTypeCheck<CR>
 au FileType scala nnoremap <localleader>df :EnDeclaration v<CR>
+
+" Haskell development
+
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
+let g:haskell_indent_if = 3
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 2
+let g:haskell_indent_guard = 2
+let g:haskell_indent_case_alternative = 1
+let g:cabal_indent_section = 2
+
+au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+
+" vue
+autocmd FileType vue syntax sync fromstart
+
+" OLD THEMES
+"
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'jacoborus/tender.vim'
+"
+" change RED words in solarized theme
+" change search highlight
+" augroup vimrc
+"   autocmd!
+"   autocmd ColorScheme * hi Special ctermbg=NONE ctermfg=136 | hi MatchParen cterm=NONE ctermfg=136 | hi Type ctermfg=61 | hi Search cterm=NONE ctermbg=125
+" augroup END
+
+" solarized
+" set t_Co=256
+" let g:solarized_termtrans=1
+" let g:solarized_termcolors=256
+" set background=dark
+" colorscheme solarized
+
+" tender
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
+" colorscheme tender
+
