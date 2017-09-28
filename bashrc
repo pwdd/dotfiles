@@ -15,6 +15,7 @@ export LSCOLORS=HxHxHxHxHxegedabagacad
 export PATH="/Users/aina/.local/bin:/usr/local/bin:$PATH"
 export JUNIT_HOME="$HOME/java"
 export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:$JUNIT_HOME/hamcrest-core-1.3.jar"
+export PLAY_TEST_SECRET="TanDdzv8l3lnC3HJt1mjEA:7C[;Y;y[w2>@xA2TR<Z73\`oO5Oq/Mr7VQ=I7S40d6"
 
 alias ls='ls -Gh'
 alias be="bundle exec"

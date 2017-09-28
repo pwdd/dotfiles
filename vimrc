@@ -29,6 +29,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'https://github.com/bitc/vim-hdevtools.git'
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
+Plug 'kchmck/vim-coffee-script'
 
 " themes
 Plug 'w0ng/vim-hybrid'
