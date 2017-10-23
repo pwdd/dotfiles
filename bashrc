@@ -6,9 +6,21 @@ fi
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
- }
+}
 
-export PS1="\[\033[32m\]\w\[\033[36m\]\$(parse_git_branch)\[\033[00m\] $ "
+parse_svn_branch() {
+  parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " ["$1"]" }'
+}
+
+parse_svn_url() {
+  svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+}
+
+parse_svn_repository_root() {
+  svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+}
+
+export PS1="\[\033[32m\]\w\[\033[36m\]\$(parse_git_branch)\$(parse_svn_branch)\[\033[00m\] $ "
 
 export CLICOLOR=1
 export LSCOLORS=HxHxHxHxHxegedabagacad
@@ -22,6 +34,9 @@ alias be="bundle exec"
 alias vim="vi"
 alias c="clear"
 alias chrome='open -a "Google Chrome"'
+alias startpg='pg_ctl -D /usr/local/var/postgres start'
+alias stoppg='pg_ctl -D /usr/local/var/postgres stop'
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # added by travis gem

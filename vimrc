@@ -269,7 +269,7 @@ nnoremap <Leader>sc :SyntasticCheck<Enter>
 " Ensime
 autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <localleader>t :EnTypeCheck<CR>
-au FileType scala nnoremap <localleader>df :EnDeclaration v<CR>
+au FileType scala nnoremap <localleader>df :EnDeclarationSplit v<CR>
 
 " Haskell development
 
