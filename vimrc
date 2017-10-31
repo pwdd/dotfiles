@@ -30,6 +30,9 @@ Plug 'https://github.com/bitc/vim-hdevtools.git'
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'Quramy/tsuquyomi'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " themes
 Plug 'w0ng/vim-hybrid'
@@ -252,6 +255,8 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " let g:loaded_syntastic_java_javac_checker = 1
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 let g:syntastic_mode_map = { "mode": "active",
                            \ "passive_filetypes": ["scala"] }
@@ -263,6 +268,8 @@ let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
 let g:syntastic_scala_checkers=['fsc', 'scalac', 'scalastyle']
 let g:syntastic_haskell_checkers=['hdevtools']
+
+let g:syntastic_html_tidy_ignore_errors=["<app-", "discarding unexpected </app-", " proprietary attribute \"ng-"]
 
 nnoremap <Leader>sc :SyntasticCheck<Enter>
 
@@ -298,6 +305,16 @@ au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
 " vue
 autocmd FileType vue syntax sync fromstart
+
+" typescript - run :make
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost l* nested lwindow
+
+" vim js pretty template
+autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript syn clear foldBraces
 
 " OLD THEMES
 "
