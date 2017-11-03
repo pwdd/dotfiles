@@ -9,6 +9,7 @@ brew cask install java8
 
 brew install bash-completion
 brew install git
+brew install git-quick-stats
 brew install gnupg
 brew install gnupg2
 brew install leiningen

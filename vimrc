@@ -31,8 +31,6 @@ Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'Quramy/vim-js-pretty-template'
-Plug 'Quramy/tsuquyomi'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 " themes
 Plug 'w0ng/vim-hybrid'
@@ -79,6 +77,9 @@ set backspace=indent,eol,start
 
 " disable sounds
 set vb t_vb=
+
+" remap Esc
+inoremap jj <Esc>
 
 " Highlight current pane with a 100 char board delimitation
 augroup BgHighlight
@@ -255,8 +256,6 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " let g:loaded_syntastic_java_javac_checker = 1
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi']
 
 let g:syntastic_mode_map = { "mode": "active",
                            \ "passive_filetypes": ["scala"] }
@@ -310,7 +309,7 @@ autocmd FileType vue syntax sync fromstart
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
 autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost l* nested lwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 
 " vim js pretty template
 autocmd FileType typescript JsPreTmpl html
