@@ -24,6 +24,6 @@ brew install scala
 brew install scalastyle
 brew install tmux
 brew install tree
-brew install vim --with-override-system-vi
+brew install macvim --with-override-system-vi
 
 brew cleanup
