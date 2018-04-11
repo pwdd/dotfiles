@@ -24,13 +24,15 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'vim-syntastic/syntastic'
-Plug 'ensime/ensime-vim'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'https://github.com/bitc/vim-hdevtools.git'
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'Quramy/vim-js-pretty-template'
+Plug 'Quramy/tsuquyomi'
+Plug 'ekalinin/Dockerfile.vim'
+" Plug 'ensime/ensime-vim'
 
 " themes
 Plug 'w0ng/vim-hybrid'
@@ -42,6 +44,8 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
 
 syntax on
 filetype plugin indent on
@@ -91,6 +95,7 @@ augroup END
 " NERDTree
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 let g:NERDTreeWinSize=30
+let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 let NERDTreeShowHidden=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -267,15 +272,17 @@ let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
 let g:syntastic_scala_checkers=['fsc', 'scalac', 'scalastyle']
 let g:syntastic_haskell_checkers=['hdevtools']
-
-let g:syntastic_html_tidy_ignore_errors=["<app-", "discarding unexpected </app-", " proprietary attribute \"ng-"]
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty \<", "inserting implicit ", "unescaped \&" , "lacks \"action", "lacks value", "lacks \"src", "is not recognized!", "discarding unexpected", "replacing obsolete "]
 
 nnoremap <Leader>sc :SyntasticCheck<Enter>
 
 " Ensime
-autocmd BufWritePost *.scala silent :EnTypeCheck
-nnoremap <localleader>t :EnTypeCheck<CR>
-au FileType scala nnoremap <localleader>df :EnDeclarationSplit v<CR>
+" autocmd BufWritePost *.scala silent :EnTypeCheck
+" nnoremap <localleader>t :EnTypeCheck<CR>
+" au FileType scala nnoremap <localleader>df :EnDeclarationSplit v<CR>
+" let g:ensime_server_v2=1
 
 " Haskell development
 
@@ -315,6 +322,14 @@ autocmd QuickFixCmdPost    l* nested lwindow
 autocmd FileType typescript JsPreTmpl html
 autocmd FileType typescript syn clear foldBraces
 
+" tsuquyomi
+autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
+autocmd FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
+
+:let g:tsuquyomi_single_quote_import=1
+
+:iabbrev clog console.log('========================');<CR> console.log(#HERE#);<CR> console.log('========================');<CR>
+
 " OLD THEMES
 "
 " Plug 'altercation/vim-colors-solarized'
@@ -339,4 +354,3 @@ autocmd FileType typescript syn clear foldBraces
 "   set termguicolors
 " endif
 " colorscheme tender
-
