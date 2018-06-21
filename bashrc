@@ -41,6 +41,25 @@ alias startpg='pg_ctl -D /usr/local/var/postgres start'
 alias stoppg='pg_ctl -D /usr/local/var/postgres stop'
 alias starttomcat='brew services start tomcat'
 alias stoptomcat='brew services stop tomcat'
+alias gs='git status'
+
+alias gp='git push'
+alias gpr='git pull --rebase'
+alias gpl='git pull'
+alias ga='git add'
+alias gaa='git add -A'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcv='git commit -v'
+alias gca='git commit --amend'
+alias gcan='git commit --amend --no-edit'
+alias grh='git reset --hard'
+alias gco='git checkout'
+alias gl='git lg -15'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gb='git branch'
+alias gg='git grep --break --heading -n'
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -54,3 +73,4 @@ alias jdk8="export JAVA_HOME=\"/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jd
 # added by travis gem
 [ -f /Users/aina/.travis/travis.sh ] && source /Users/aina/.travis/travis.sh
 
+alias mocks='cd ~/Work/_git/Tools/MockRestServices && ./restartMockServiceMac.sh'
