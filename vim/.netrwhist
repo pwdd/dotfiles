@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/aina'
-let g:netrw_dirhist_2='/Users/aina/dotfiles/vim/plugged'
-let g:netrw_dirhist_3='/Users/aina/8thlight/scala-koans'
-let g:netrw_dirhist_4='/Users/aina/exercism'
-let g:netrw_dirhist_5='/Users/aina/8thlight/scala-koans'
-let g:netrw_dirhist_6='/Users/aina/dotfiles'

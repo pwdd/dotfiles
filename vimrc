@@ -1,3 +1,7 @@
+if has('python3')
+  silent! python3 1
+endif
+
 set nocompatible
 filetype off
 
@@ -32,7 +36,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'Quramy/tsuquyomi'
 Plug 'ekalinin/Dockerfile.vim'
-" Plug 'ensime/ensime-vim'
+Plug 'ensime/ensime-vim'
 
 " themes
 Plug 'w0ng/vim-hybrid'
@@ -279,10 +283,23 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming em
 nnoremap <Leader>sc :SyntasticCheck<Enter>
 
 " Ensime
-" autocmd BufWritePost *.scala silent :EnTypeCheck
-" nnoremap <localleader>t :EnTypeCheck<CR>
-" au FileType scala nnoremap <localleader>df :EnDeclarationSplit v<CR>
-" let g:ensime_server_v2=1
+autocmd BufWritePost *.scala silent :EnTypeCheck
+
+autocmd FileType scala,java
+      \ nnoremap <buffer> <silent> <LocalLeader>t :EnType<CR> |
+      \ xnoremap <buffer> <silent> <LocalLeader>t :EnType selection<CR> |
+      \ nnoremap <buffer> <silent> <LocalLeader>T :EnTypeCheck<CR> |
+      \ nnoremap <buffer> <silent> K  :EnDocBrowse<CR> |
+      \ nnoremap <buffer> <silent> gd :EnDeclaration<CR> |
+      \ nnoremap <buffer> <silent> <C-]>  :EnDeclaration<CR> |
+      \ nnoremap <buffer> <silent> <C-w>] :EnDeclarationSplit<CR> |
+      \ nnoremap <buffer> <silent> <C-w><C-]> :EnDeclarationSplit<CR> |
+      \ nnoremap <buffer> <silent> <C-v>] :EnDeclarationSplit v<CR> |
+      \ nnoremap <buffer> <silent> <LocalLeader>i :EnInspectType<CR> |
+      \ nnoremap <buffer> <silent> <LocalLeader>I :EnSuggestImport<CR> |
+      \ nnoremap <buffer> <silent> <LocalLeader>r :EnRename<CR>
+
+let g:ensime_server_v2=1
 
 " Haskell development
 

@@ -10,24 +10,16 @@
 
 # hlsearch on (H) or off (h):
 ~h
-# Last Substitute String:
-$
+# Last Search Pattern:
+~MSle0~/svn
 
 # Command Line History (newest to oldest):
-:q
-|2,0,1474812497,,"q"
-:w
-|2,0,1474779610,,"w"
-:PlugInstall
-|2,0,1474778550,,"PlugInstall"
 :wq
-|2,0,1474778540,,"wq"
-:call plug#begin('~/.vim/plugged')
-|2,0,1474778506,,"call plug#begin('~/.vim/plugged')"
+|2,0,1532902749,,"wq"
 
 # Search String History (newest to oldest):
-??\a
-|2,1,1474778559,63,"\\a"
+?/svn
+|2,1,1532902715,47,"svn"
 
 # Expression History (newest to oldest):
 
@@ -36,363 +28,36 @@ $
 # Debug Line History (newest to oldest):
 
 # Registers:
-"0	CHAR	0
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-|3,0,0,0,12,0,1474778559,"in","in","in","in","in","in","in","in","in","in","in","in"
-""1	LINE	0
-	  def limit_row_forward_up(coordinate)
-	     row = coordinate[0]
-	     column = coordinate[1]
-	     row.zero? || column.zero? ? 0 : (row - column).abs
-	  end
-	
-	  def limit_row_forward_down(coordinate)
-	    row = coordinate[0]
-	    column = coordinate[1]
-	    row - column >= 0 ? size - 1 : (size - 1) - (row - column)
-	  end
-	
-	  def limit_column_forward_up(coordinate)
-	    row = coordinate[0]
-	    column = coordinate[1]
-	    row - column <= 0 ? (row - column).abs : 0
-	  end
-	
-	  def limit_column_forward_down(coordinate)
-	    row = coordinate[0]
-	    column = coordinate[1]
-	    row - column <= 0 ? size - 1 : column +  (size - row)
-	  end
-	
-	  Coordinate = Struct.new(:row, :column)
-	  def make_coordinate(array)
-	    Coordinate.new(array[0], array[1])
-	  end
-	
-|3,1,1,1,29,0,1474779590,"  def limit_row_forward_up(coordinate)","     row = coordinate[0]","     column = coordinate[1]","     row.zero? || column.zero? ? 0 : (row - column).abs","  end","","  def limit_row_forward_down(coordinate)","    row = coordinate[0]","    column = coordinate[1]","    row - column >= 0 ? size - 1 : (size - 1) - (row - column)","  end","","  def limit_column_forward_up(coordinate)","    row = coordinate[0]",>28
-|<"    column = coordinate[1]","    row - column <= 0 ? (row - column).abs : 0","  end","","  def limit_column_forward_down(coordinate)","    row = coordinate[0]","    column = coordinate[1]","    row - column <= 0 ? size - 1 : column +  (size - row)","  end","","  Coordinate = Struct.new(:row, :column)","  def make_coordinate(array)","    Coordinate.new(array[0], array[1])","  end",""
-"2	BLOCK	1
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-	in
-|3,0,2,2,12,1,1474778361,"in","in","in","in","in","in","in","in","in","in","in","in"
+""-	CHAR	0
+	 
+|3,1,36,0,1,0,1532902746," "
 
 # File marks:
-'0  105  0  ~/.git-completion.bash
-|4,48,105,0,1474812497,"~/.git-completion.bash"
-'1  8  0  ~/Desktop/sites/8_queens/NERD_tree_2
-|4,49,8,0,1474779690,"~/Desktop/sites/8_queens/NERD_tree_2"
-'2  1  0  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,50,1,0,1474778810,"~/Desktop/sites/8_queens/NERD_tree_1"
-'3  1  0  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,51,1,0,1474778810,"~/Desktop/sites/8_queens/NERD_tree_1"
-'4  1  0  ~/NERD_tree_1
-|4,52,1,0,1474778561,"~/NERD_tree_1"
-'5  5  0  ~/.vimrc
-|4,53,5,0,1474778540,"~/.vimrc"
-'6  1  0  ~/vimrc
-|4,54,1,0,1474778528,"~/vimrc"
-'7  7  4  ~/.vimrc
-|4,55,7,4,1474778367,"~/.vimrc"
-'8  7  4  ~/.vimrc
-|4,56,7,4,1474778367,"~/.vimrc"
-'9  87  44  ~/.vimrc
-|4,57,87,44,1474777997,"~/.vimrc"
+'0  13  16  ~/dotfiles/bashrc
+|4,48,13,16,1532902749,"~/dotfiles/bashrc"
 
 # Jumplist (newest first):
--'  105  0  ~/.git-completion.bash
-|4,39,105,0,1474812497,"~/.git-completion.bash"
--'  1  0  ~/.git-completion.bash
-|4,39,1,0,1474812480,"~/.git-completion.bash"
--'  8  0  ~/Desktop/sites/8_queens/NERD_tree_2
-|4,39,8,0,1474779690,"~/Desktop/sites/8_queens/NERD_tree_2"
--'  8  0  ~/Desktop/sites/8_queens/NERD_tree_2
-|4,39,8,0,1474779690,"~/Desktop/sites/8_queens/NERD_tree_2"
--'  16  2  ~/Desktop/sites/8_queens/NERD_tree_2
-|4,39,16,2,1474779687,"~/Desktop/sites/8_queens/NERD_tree_2"
--'  1  0  ~/Desktop/sites/8_queens/NERD_tree_2
-|4,39,1,0,1474779687,"~/Desktop/sites/8_queens/NERD_tree_2"
--'  16  2  ~/Desktop/sites/8_queens/NERD_tree_2
-|4,39,16,2,1474779687,"~/Desktop/sites/8_queens/NERD_tree_2"
--'  1  0  ~/Desktop/sites/8_queens/NERD_tree_2
-|4,39,1,0,1474779687,"~/Desktop/sites/8_queens/NERD_tree_2"
--'  1  0  ~/Desktop/sites/8_queens/lib/board.rb
-|4,39,1,0,1474778883,"~/Desktop/sites/8_queens/lib/board.rb"
--'  1  0  ~/Desktop/sites/8_queens/lib/board.rb
-|4,39,1,0,1474778883,"~/Desktop/sites/8_queens/lib/board.rb"
--'  7  0  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,7,0,1474778880,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  7  0  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,7,0,1474778880,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  15  2  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,15,2,1474778879,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  1  0  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,1,0,1474778879,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  15  2  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,15,2,1474778879,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  1  0  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,1,0,1474778879,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  1  0  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,1,0,1474778810,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  1  0  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,1,0,1474778810,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  13  2  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,13,2,1474778591,"~/Desktop/sites/8_queens/NERD_tree_1"
--'  13  2  ~/Desktop/sites/8_queens/NERD_tree_1
-|4,39,13,2,1474778591,"~/Desktop/sites/8_queens/NERD_tree_1"
+-'  13  16  ~/dotfiles/bashrc
+|4,39,13,16,1532902749,"~/dotfiles/bashrc"
+-'  23  0  ~/dotfiles/bashrc
+|4,39,23,0,1532902715,"~/dotfiles/bashrc"
+-'  25  0  ~/NERD_tree_1
+|4,39,25,0,1532902707,"~/NERD_tree_1"
+-'  54  2  ~/NERD_tree_1
+|4,39,54,2,1532902703,"~/NERD_tree_1"
 -'  1  0  ~/NERD_tree_1
-|4,39,1,0,1474778561,"~/NERD_tree_1"
--'  1  0  ~/NERD_tree_1
-|4,39,1,0,1474778561,"~/NERD_tree_1"
--'  1  0  ~/NERD_tree_1
-|4,39,1,0,1474778561,"~/NERD_tree_1"
--'  1  0  ~/NERD_tree_1
-|4,39,1,0,1474778561,"~/NERD_tree_1"
--'  1  0  ~/NERD_tree_1
-|4,39,1,0,1474778561,"~/NERD_tree_1"
--'  1  0  ~/NERD_tree_1
-|4,39,1,0,1474778561,"~/NERD_tree_1"
--'  1  0  ~/NERD_tree_1
-|4,39,1,0,1474778561,"~/NERD_tree_1"
--'  1  0  ~/NERD_tree_1
-|4,39,1,0,1474778561,"~/NERD_tree_1"
--'  39  2  ~/NERD_tree_1
-|4,39,39,2,1474778559,"~/NERD_tree_1"
--'  39  2  ~/NERD_tree_1
-|4,39,39,2,1474778559,"~/NERD_tree_1"
--'  39  2  ~/NERD_tree_1
-|4,39,39,2,1474778559,"~/NERD_tree_1"
--'  39  2  ~/NERD_tree_1
-|4,39,39,2,1474778559,"~/NERD_tree_1"
--'  39  2  ~/NERD_tree_1
-|4,39,39,2,1474778559,"~/NERD_tree_1"
--'  39  2  ~/NERD_tree_1
-|4,39,39,2,1474778559,"~/NERD_tree_1"
--'  39  2  ~/NERD_tree_1
-|4,39,39,2,1474778559,"~/NERD_tree_1"
--'  39  2  ~/NERD_tree_1
-|4,39,39,2,1474778559,"~/NERD_tree_1"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  5  0  ~/.vimrc
-|4,39,5,0,1474778540,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/.vimrc
-|4,39,1,0,1474778532,"~/.vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
--'  1  0  ~/vimrc
-|4,39,1,0,1474778528,"~/vimrc"
+|4,39,1,0,1532902703,"~/NERD_tree_1"
 
 # History of marks within files (newest to oldest):
 
-> ~/.git-completion.bash
-	*	1474812495	0
-	"	105	0
-
-> ~/Desktop/sites/8_queens/lib/board.rb
-	*	1474779688	0
-	"	1	4
-	^	76	0
-	.	47	0
-	+	90	0
-	+	76	0
-	+	47	0
-
-> ~/Desktop/sites/8_queens/spec/board_spec.rb
-	*	1474779687	0
-	"	97	0
-
-> ~/Desktop/sites/8_queens/NERD_tree_2
-	*	1474779654	0
-	"	8	0
-	.	1	0
-	+	1	0
-
-> ~/Desktop/sites/8_queens/NERD_tree_1
-	*	1474778880	0
-	"	7	0
-	.	1	0
-	+	1	0
-
 > ~/NERD_tree_1
-	*	1474778559	0
-	"	1	0
+	*	1532902707	0
+	"	25	0
 	.	1	0
 	+	1	0
 
-> ~/.vimrc
-	*	1474778540	0
-	"	5	0
-	^	5	0
-	.	5	0
-	+	87	0
-	+	4	19
-	+	6	0
-	+	5	21
-	+	19	0
-	+	20	8
-	+	7	4
-	+	5	0
-
-> ~/vimrc
-	*	1474778526	0
-	"	1	0
-
-> ~/.bashrc
-	*	1474777965	0
-	"	1	43
-	^	1	44
-	.	1	20
-	+	1	20
-
-> ~/.bash_profile
-	*	1474777924	0
-	"	14	21
-	^	14	22
-	.	14	0
-	+	14	0
-
-> ~/.tmux.conf
-	*	1474777873	0
-	"	9	67
-	^	9	68
-	.	9	0
-	+	9	0
+> ~/dotfiles/bashrc
+	*	1532902748	0
+	"	13	16
+	.	11	58
+	+	11	58
