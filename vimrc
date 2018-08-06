@@ -269,7 +269,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "active",
                            \ "passive_filetypes": ["scala"] }
 
-let g:syntastic_scala_scalastyle_jar = "/usr/local/Cellar/scalastyle/0.8.0/libexec/scalastyle_2.11-0.8.0-batch.jar"
+let g:syntastic_scala_scalastyle_jar = "/usr/local/Cellar/scalastyle/1.0.0/libexec/scalastyle_2.11-1.0.0-batch.jar"
 let g:syntastic_scala_scalastyle_config_file = "/usr/local/etc/scalastyle_config.xml"
 
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
