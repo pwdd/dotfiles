@@ -2,6 +2,9 @@
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
+
+  __git_complete g __git_main
+  __git_complete gco _git_checkout
 fi
 
 parse_git_branch() {
@@ -18,12 +21,15 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home"
 export JUNIT_HOME="$HOME/java"
 export CLASSPATH="$CLASSPATH:$JUNIT_HOME/junit-4.12.jar:$JUNIT_HOME/hamcrest-core-1.3.jar"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 alias ls='ls -Gh'
 alias be="bundle exec"
 # alias vim="vi"
+alias vim="nvim"
 alias c="clear"
 alias chrome='open -a "Google Chrome"'
+alias firefox='open -a Firefox'
 alias startpg='pg_ctl -D /usr/local/var/postgres start'
 alias stoppg='pg_ctl -D /usr/local/var/postgres stop'
 alias starttomcat='brew services start tomcat'

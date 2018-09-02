@@ -6,7 +6,7 @@ set nocompatible
 filetype off
 
 " Plugins - vim-plug
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 Plug 'gmarik/vundle'
 Plug 'christoomey/vim-tmux-navigator'
@@ -19,7 +19,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'https://github.com/derekwyatt/vim-scala.git'
 Plug 'pangloss/vim-javascript'
 Plug 'derekwyatt/vim-scala'
 Plug 'tpope/vim-rails'
@@ -36,12 +35,30 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'Quramy/tsuquyomi'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'ensime/ensime-vim'
+Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'cloudhead/neovim-fuzzy'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " themes
 Plug 'w0ng/vim-hybrid'
 
 call plug#end()
+
+"Code completion with Deoplete - enabled by ensime
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources={}
+let g:deoplete#sources._=['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips']
+let g:deoplete#omni#input_patterns={}
+let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -269,7 +286,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = { "mode": "active",
                            \ "passive_filetypes": ["scala"] }
 
-let g:syntastic_scala_scalastyle_jar = "/usr/local/Cellar/scalastyle/1.0.0/libexec/scalastyle_2.11-1.0.0-batch.jar"
+let g:syntastic_scala_scalastyle_jar = "/usr/local/Cellar/scalastyle/1.0.0/libexec/scalastyle_2.12-1.0.0-batch.jar"
 let g:syntastic_scala_scalastyle_config_file = "/usr/local/etc/scalastyle_config.xml"
 
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
@@ -347,27 +364,4 @@ autocmd FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbol
 
 :iabbrev clog console.log('========================');<CR> console.log(#HERE#);<CR> console.log('========================');<CR>
 
-" OLD THEMES
-"
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'jacoborus/tender.vim'
-"
-" change RED words in solarized theme
-" change search highlight
-" augroup vimrc
-"   autocmd!
-"   autocmd ColorScheme * hi Special ctermbg=NONE ctermfg=136 | hi MatchParen cterm=NONE ctermfg=136 | hi Type ctermfg=61 | hi Search cterm=NONE ctermbg=125
-" augroup END
-
-" solarized
-" set t_Co=256
-" let g:solarized_termtrans=1
-" let g:solarized_termcolors=256
-" set background=dark
-" colorscheme solarized
-
-" tender
-" if (has("termguicolors"))
-"   set termguicolors
-" endif
-" colorscheme tender
+:iabbrev pln println("==============================")<CR> println(#HERE)<CR> println("==============================")<CR>
