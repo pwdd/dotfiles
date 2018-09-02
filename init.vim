@@ -39,6 +39,7 @@ Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'cloudhead/neovim-fuzzy'
+Plug 'neomake/neomake'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -53,12 +54,35 @@ Plug 'w0ng/vim-hybrid'
 
 call plug#end()
 
+" fuzzy finder with ctrl-p
+nnoremap <C-p> :FuzzyOpen<CR>
+
 "Code completion with Deoplete - enabled by ensime
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources={}
 let g:deoplete#sources._=['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips']
 let g:deoplete#omni#input_patterns={}
 let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
+
+"Linting with neomake
+let g:neomake_sbt_maker = {
+      \ 'exe': 'sbt',
+      \ 'args': ['-Dsbt.log.noformat=true', 'compile'],
+      \ 'append_file': 0,
+      \ 'auto_enabled': 1,
+      \ 'output_stream': 'stdout',
+      \ 'errorformat':
+          \ '%E[%trror]\ %f:%l:\ %m,' .
+            \ '%-Z[error]\ %p^,' .
+            \ '%-C%.%#,' .
+            \ '%-G%.%#'
+     \ }
+
+let g:neomake_enabled_makers = ['sbt']
+let g:neomake_verbose=3
+
+" Neomake on text change
+autocmd InsertLeave,TextChanged * update | Neomake! sbt
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
