@@ -35,18 +35,17 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'Quramy/tsuquyomi'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'cloudhead/neovim-fuzzy'
 Plug 'neomake/neomake'
 
 if has('nvim')
+  Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
+  Plug 'ensime/ensime-vim'
   Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 " themes
@@ -82,7 +81,7 @@ let g:neomake_enabled_makers = ['sbt']
 let g:neomake_verbose=3
 
 " Neomake on text change
-autocmd InsertLeave,TextChanged * update | Neomake! sbt
+autocmd BufWrite * update | Neomake! sbt
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -129,6 +128,14 @@ set vb t_vb=
 
 " remap Esc
 inoremap jj <Esc>
+
+" moving lines
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+inoremap ∆ <Esc>:m .+1<CR>==gi
+inoremap ˚ <Esc>:m .-2<CR>==gi
+vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap ˚ :m '<-2<CR>gv=gv
 
 " Highlight current pane with a 100 char board delimitation
 augroup BgHighlight
@@ -338,7 +345,8 @@ autocmd FileType scala,java
       \ nnoremap <buffer> <silent> <C-v>] :EnDeclarationSplit v<CR> |
       \ nnoremap <buffer> <silent> <LocalLeader>i :EnInspectType<CR> |
       \ nnoremap <buffer> <silent> <LocalLeader>I :EnSuggestImport<CR> |
-      \ nnoremap <buffer> <silent> <LocalLeader>r :EnRename<CR>
+      \ nnoremap <buffer> <silent> <LocalLeader>r :EnRename<CR> |
+      \ nnoremap <buffer> <silent> <LocalLeader>oi :EnOrganizeImports<CR>
 
 let g:ensime_server_v2=1
 
