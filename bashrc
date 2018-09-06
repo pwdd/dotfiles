@@ -52,7 +52,7 @@ alias gl='git lg -15'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gb='git branch'
-alias gg='git grep --break --heading -n'
+alias gg='git grep --break --heading -n -i'
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
