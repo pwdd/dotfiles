@@ -16,7 +16,7 @@ export PS1="\[\033[32m\]\w\[\033[36m\]\$(parse_git_branch)\[\033[00m\] $\n"
 export CLICOLOR=1
 export LSCOLORS=HxHxHxHxHxegedabagacad
 export PATH="/Users/apint8/.local/bin:/usr/local/bin:$PATH"
-export PATH="$HOME/Users/apint8/Library/Python/2.7/bin:$PATH"
+# export PATH="$HOME/Users/apint8/Library/Python/2.7/bin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home"
 export JUNIT_HOME="$HOME/java"
@@ -30,8 +30,10 @@ alias vim="nvim"
 alias c="clear"
 alias chrome='open -a "Google Chrome"'
 alias firefox='open -a Firefox'
+
 alias startpg='pg_ctl -D /usr/local/var/postgres start'
 alias stoppg='pg_ctl -D /usr/local/var/postgres stop'
+
 alias starttomcat='brew services start tomcat'
 alias stoptomcat='brew services stop tomcat'
 
@@ -53,6 +55,10 @@ alias gd='git diff'
 alias gds='git diff --staged'
 alias gb='git branch'
 alias gg='git grep --break --heading -n -i'
+
+alias dcont='docker container'
+alias dcr='docker container run'
+alias dc='docker-compose'
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 

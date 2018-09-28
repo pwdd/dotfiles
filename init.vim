@@ -21,6 +21,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug 'derekwyatt/vim-scala'
+Plug 'ktvoelker/sbt-vim'
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -56,6 +57,9 @@ call plug#end()
 " fuzzy finder with ctrl-p
 nnoremap <C-p> :FuzzyOpen<CR>
 
+" align columns
+xnoremap <Leader>a :%!column -t<Enter>==<Enter>
+
 "Code completion with Deoplete - enabled by ensime
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources={}
@@ -81,7 +85,7 @@ let g:neomake_enabled_makers = ['sbt']
 let g:neomake_verbose=3
 
 " Neomake on text change
-autocmd BufWrite * update | Neomake! sbt
+autocmd BufWrite *.scala update | Neomake! sbt
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -90,6 +94,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 syntax on
 filetype plugin indent on
