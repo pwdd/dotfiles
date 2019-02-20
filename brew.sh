@@ -12,18 +12,15 @@ brew install git
 brew install git-quick-stats
 brew install gnupg
 brew install gnupg2
-brew install leiningen
 brew install node
 brew install openssl
 brew install python3
-brew install rbenv
 brew install reattach-to-user-namespace
-brew install ruby-build
 brew install sbt
 brew install scala
 brew install scalastyle
 brew install tmux
 brew install tree
-brew install macvim --with-override-system-vi
+brew install neovim
 
 brew cleanup

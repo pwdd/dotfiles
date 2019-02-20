@@ -1,0 +1,19 @@
+[user]
+	name = pwdd
+	email = pwdd@users.noreply.github.com
+[includeIf "gitdir:~/nike/"]
+  path = ~/nike/.gitconfig
+[alias]
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(magenta)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+  co = checkout
+  st = status
+[core]
+	excludesfile = /Users/apint8/.gitignore
+	editor = /usr/local/bin/nvim
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[credential]
+	helper = osxkeychain
