@@ -8,7 +8,7 @@
   co = checkout
   st = status
 [core]
-	excludesfile = /Users/apint8/.gitignore
+	excludesfile = /Users/aina/.gitignore
 	editor = /usr/local/bin/nvim
 [filter "lfs"]
 	process = git-lfs filter-process

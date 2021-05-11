@@ -10,44 +10,31 @@ call plug#begin()
 
 Plug 'gmarik/vundle'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'guns/vim-clojure-static'
 Plug 'Raimondi/delimitMate'
 Plug 'plasticboy/vim-markdown'
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug 'derekwyatt/vim-scala'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ckipp01/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 Plug 'ktvoelker/sbt-vim'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'neovimhaskell/haskell-vim'
-Plug 'https://github.com/bitc/vim-hdevtools.git'
-Plug 'posva/vim-vue'
-Plug 'mattn/emmet-vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'Quramy/vim-js-pretty-template'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mattn/emmet-vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'cloudhead/neovim-fuzzy'
+Plug 'Chiel92/vim-autoformat'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'cloudhead/neovim-fuzzy'
-Plug 'neomake/neomake'
-
-if has('nvim')
-  Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'ensime/ensime-vim'
-  Plug 'Shougo/deoplete.nvim'
-endif
 
 " themes
 Plug 'w0ng/vim-hybrid'
@@ -60,32 +47,8 @@ nnoremap <C-p> :FuzzyOpen<CR>
 " align columns
 xnoremap <Leader>a :%!column -t<Enter>==<Enter>
 
-"Code completion with Deoplete - enabled by ensime
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources={}
-let g:deoplete#sources._=['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips']
-let g:deoplete#omni#input_patterns={}
-let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
-
-"Linting with neomake
-let g:neomake_sbt_maker = {
-      \ 'exe': 'sbt',
-      \ 'args': ['-Dsbt.log.noformat=true', 'compile'],
-      \ 'append_file': 0,
-      \ 'auto_enabled': 1,
-      \ 'output_stream': 'stdout',
-      \ 'errorformat':
-          \ '%E[%trror]\ %f:%l:\ %m,' .
-            \ '%-Z[error]\ %p^,' .
-            \ '%-C%.%#,' .
-            \ '%-G%.%#'
-     \ }
-
-let g:neomake_enabled_makers = ['sbt']
-let g:neomake_verbose=3
-
-" Neomake on text change
-autocmd BufWrite *.scala update | Neomake! sbt
+" json syntax highlight
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -131,21 +94,10 @@ set backspace=indent,eol,start
 " disable sounds
 set vb t_vb=
 
-" remap Esc
-inoremap jj <Esc>
-
-" moving lines
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-inoremap ∆ <Esc>:m .+1<CR>==gi
-inoremap ˚ <Esc>:m .-2<CR>==gi
-vnoremap ∆ :m '>+1<CR>gv=gv
-vnoremap ˚ :m '<-2<CR>gv=gv
-
-" Highlight current pane with a 100 char board delimitation
+" Highlight current pane with a 120 char board delimitation
 augroup BgHighlight
   autocmd!
-  autocmd WinEnter * set colorcolumn=100
+  autocmd WinEnter * set colorcolumn=120
   autocmd WinLeave * set colorcolumn=0
 augroup END
 
@@ -194,7 +146,7 @@ set clipboard=unnamed
 set incsearch
 set hlsearch
 
-" ================================================ lightline =====================================================
+" ========== lightline ==========
 
 let g:lightline = {
       \ 'active': {
@@ -304,84 +256,8 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
-" ============================================================================================================
-"
-" syntastic
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" let g:loaded_syntastic_java_javac_checker = 1
-
-let g:syntastic_mode_map = { "mode": "active",
-                           \ "passive_filetypes": ["scala"] }
-
-let g:syntastic_scala_scalastyle_jar = "/usr/local/Cellar/scalastyle/1.0.0/libexec/scalastyle_2.12-1.0.0-batch.jar"
-let g:syntastic_scala_scalastyle_config_file = "/usr/local/etc/scalastyle_config.xml"
-
-let g:syntastic_ruby_checkers=['rubocop', 'mri']
-let g:syntastic_python_checkers=['pep8', 'pylint', 'python']
-let g:syntastic_scala_checkers=['fsc', 'scalac', 'scalastyle']
-let g:syntastic_haskell_checkers=['hdevtools']
 let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi']
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty \<", "inserting implicit ", "unescaped \&" , "lacks \"action", "lacks value", "lacks \"src", "is not recognized!", "discarding unexpected", "replacing obsolete "]
-
-nnoremap <Leader>sc :SyntasticCheck<Enter>
-
-" Ensime
-autocmd BufWritePost *.scala silent :EnTypeCheck
-
-autocmd FileType scala,java
-      \ nnoremap <buffer> <silent> <LocalLeader>t :EnType<CR> |
-      \ xnoremap <buffer> <silent> <LocalLeader>t :EnType selection<CR> |
-      \ nnoremap <buffer> <silent> <LocalLeader>T :EnTypeCheck<CR> |
-      \ nnoremap <buffer> <silent> K  :EnDocBrowse<CR> |
-      \ nnoremap <buffer> <silent> gd :EnDeclaration<CR> |
-      \ nnoremap <buffer> <silent> <C-]>  :EnDeclaration<CR> |
-      \ nnoremap <buffer> <silent> <C-w>] :EnDeclarationSplit<CR> |
-      \ nnoremap <buffer> <silent> <C-w><C-]> :EnDeclarationSplit<CR> |
-      \ nnoremap <buffer> <silent> <C-v>] :EnDeclarationSplit v<CR> |
-      \ nnoremap <buffer> <silent> <LocalLeader>i :EnInspectType<CR> |
-      \ nnoremap <buffer> <silent> <LocalLeader>I :EnSuggestImport<CR> |
-      \ nnoremap <buffer> <silent> <LocalLeader>r :EnRename<CR> |
-      \ nnoremap <buffer> <silent> <LocalLeader>oi :EnOrganizeImports<CR>
-
-let g:ensime_server_v2=1
-
-" Haskell development
-
-let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
-
-let g:haskell_indent_if = 3
-let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 6
-let g:haskell_indent_before_where = 2
-let g:haskell_indent_after_bare_where = 2
-let g:haskell_indent_do = 3
-let g:haskell_indent_in = 2
-let g:haskell_indent_guard = 2
-let g:haskell_indent_case_alternative = 1
-let g:cabal_indent_section = 2
-
-au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-
-" vue
-autocmd FileType vue syntax sync fromstart
 
 " typescript - run :make
 let g:typescript_compiler_binary = 'tsc'
@@ -390,15 +266,144 @@ autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 " vim js pretty template
-autocmd FileType typescript JsPreTmpl html
+autocmd FileType typescript JsPreTmpl
 autocmd FileType typescript syn clear foldBraces
-
-" tsuquyomi
-autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
-autocmd FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
-
-:let g:tsuquyomi_single_quote_import=1
 
 :iabbrev clog console.log('========================');<CR> console.log(#HERE#);<CR> console.log('========================');<CR>
 
-:iabbrev pln println("==============================")<CR> println(#HERE)<CR> println("==============================")<CR>
+:iabbrev pp println("==============================")<CR> println(#HERE)<CR> println("==============================")<CR>
+
+" ================coc=====================
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>cfs  <Plug>(coc-format-selected)
+nmap <leader>cfs  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" ============== format ============
+noremap <F5> :Autoformat<CR>
+let g:formatdef_scalafmt = "'scalafmt --stdin'"
+let g:formatters_scala = ['scalafmt']

@@ -16,3 +16,4 @@ pom.xml.asc
 vim/
 .ensime
 .ensime_cache
+.bloop

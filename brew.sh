@@ -22,5 +22,7 @@ brew install scalastyle
 brew install tmux
 brew install tree
 brew install neovim
+brew install scalacenter/bloop/bloop
+
 
 brew cleanup
