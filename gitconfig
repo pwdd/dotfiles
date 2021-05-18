@@ -17,3 +17,6 @@
 	smudge = git-lfs smudge -- %f
 [credential]
 	helper = osxkeychain
+[init]
+  defaultBranch = main
+
