@@ -27,3 +27,5 @@ alias gb='git branch'
 alias gg='git grep --break --heading -n -i'
 
 alias dcont='docker container'
+
+alias listjava='/usr/libexec/java_home'
