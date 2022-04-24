@@ -1,7 +1,6 @@
 #!/bin/bash
 dir=~/dotfiles
 olddir=~/dotfiles_old
-nviminit=init.vim
 files="zshrc gitconfig gitignore ideavimrc tmux.conf"
 
 mkdir -p ~/.config/nvim
@@ -16,5 +15,4 @@ done
 mv ~/aliases.zsh ~/$olddir/
 ln -s $dir/aliases.zsh ~/aliases.zsh
 
-ln -s $dir/$nviminit ~/.config/nvim/init.vim
 

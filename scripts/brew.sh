@@ -26,5 +26,10 @@ brew install neovim
 brew install scalacenter/bloop/bloop
 brew install coursier/formulas/coursier
 brew install --cask iterm2
+brew install fd
+brew install ripgrep
+brew install stow
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
 
 brew cleanup
