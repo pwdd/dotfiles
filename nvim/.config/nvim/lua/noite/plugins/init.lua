@@ -88,10 +88,9 @@ return require('packer').startup(function(use)
   use 'Chiel92/vim-autoformat'
   use 'roxma/nvim-yarp'
   use 'roxma/vim-hug-neovim-rpc'
-  use 'liuchengxu/vim-which-key'
 
 --   use {
---     'neoclide/coc.nvim',
---     branch =  'release'
+--     "folke/which-key.nvim",
+--     config = require("noite.plugins.whichkey").setup()
 --   }
 end)

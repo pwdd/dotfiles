@@ -35,8 +35,8 @@ local setup = function()
     	gitsigns = false,
     	telescope = true,
     	nvimtree = {
-    		enabled = false,
-    		show_root = false,
+    		enabled = true,
+    		show_root = true,
     		transparent_panel = false,
     	},
     	neotree = {
@@ -44,7 +44,7 @@ local setup = function()
     		show_root = false,
     		transparent_panel = false,
     	},
-    	which_key = false,
+    	which_key = true,
     	indent_blankline = {
     		enabled = true,
     		colored_indent_levels = false,

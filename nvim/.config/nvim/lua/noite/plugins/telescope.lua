@@ -2,7 +2,7 @@ local f = require("noite.functions")
 local map = f.map
 
 local setup = function()
-  map("n", "<leader>ff", [[<cmd>lua require("telescope.builtin").find_files({layout_strategy="vertical"})<CR>]])
+  map("n", "<leader>ff", [[<cmd>lua require("telescope.builtin").find_files({layout_strategy="vertical", hidden = true })<CR>]])
   map("n", "<leader>lg", [[<cmd>lua require("telescope.builtin").live_grep({layout_strategy="vertical"})<CR>]])
   map("n", "<leader>gh", [[<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>]])
   map("n", "<leader>mc", [[<cmd>lua require("telescope").extensions.metals.commands()<CR>]])
@@ -15,7 +15,24 @@ local setup = function()
 
   require("telescope").setup({
     defaults = {
-      file_ignore_patterns = { "target", "node_modules", "parser.c", "out", "%.min.js" },
+      vimgrep_arguments = {
+        'rg',
+        '--color=never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        '-uu'
+      },
+      file_ignore_patterns = {
+        ".git",
+        ".idea",
+        "target",
+        "node_modules",
+        "out",
+        "%.min.js"
+      },
       prompt_prefix = "❯",
       file_previewer = require("telescope.previewers").vim_buffer_cat.new,
       grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
