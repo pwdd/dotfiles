@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 brew update
 brew upgrade
@@ -23,7 +23,6 @@ brew install scala
 brew install tmux
 brew install tree
 brew install neovim
-brew install scalacenter/bloop/bloop
 brew install coursier/formulas/coursier
 brew install --cask iterm2
 brew install fd
@@ -33,3 +32,4 @@ brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 
 brew cleanup
+

@@ -5,7 +5,6 @@ alias ls='ls -Gh'
 alias vim="nvim"
 alias c="clear"
 alias chrome='open -a "Google Chrome"'
-alias firefox='open -a Firefox'
 
 alias gs='git status'
 alias gp='git push'
@@ -20,7 +19,7 @@ alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
 alias grh='git reset --hard'
 alias gco='git checkout'
-alias gl='git lg -15'
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gb='git branch'

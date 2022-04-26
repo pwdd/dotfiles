@@ -2,18 +2,16 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/aina/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-export PATH="/Users/aina/.local/bin:/usr/local/bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH=$PATH:"/usr/local/bin/metals-vim "
+export PATH=$PATH:/opt/homebrew/bin
+
+export PATH="$PATH:/Users/Aina.SilvaPinto/Library/Application Support/Coursier/bin"
 
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_14_HOME=$(/usr/libexec/java_home -v14)
 
-export JAVA_HOME=$JAVA_11_HOME
+export JAVA_HOME=$JAVA_8_HOME
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
