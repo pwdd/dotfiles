@@ -30,6 +30,7 @@ brew install ripgrep
 brew install stow
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
+brew install yaml-language-server
 
 brew cleanup
 

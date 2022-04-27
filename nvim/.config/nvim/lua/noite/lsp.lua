@@ -136,14 +136,11 @@ local setup = function()
     group = nvim_metals_group,
   })
 
-  -- These server just use the vanilla setup
-  local servers = { "bashls", "dockerls", "html", "tsserver", "yamlls" }
+  local servers = { "bashls", "dockerls", "yamlls" }
   for _, server in pairs(servers) do
     lsp_config[server].setup({ on_attach = on_attach })
   end
 
-  -- Uncomment for trace logs from neovim
-  --vim.lsp.set_log_level('trace')
 end
 
 return {
