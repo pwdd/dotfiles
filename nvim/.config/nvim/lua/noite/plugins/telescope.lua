@@ -2,10 +2,24 @@ local f = require("noite.functions")
 local map = f.map
 
 local setup = function()
-  map("n", "<leader>ff", [[<cmd>lua require("telescope.builtin").find_files({layout_strategy="vertical", hidden = true })<CR>]])
-  map("n", "<leader>lg", [[<cmd>lua require("telescope.builtin").live_grep({layout_strategy="vertical"})<CR>]])
+  require("which-key").register({
+    ["<leader>"] = {
+      f = {
+        name = "+file",
+        f = { '<cmd>lua require("telescope.builtin").find_files({layout_strategy="vertical", hidden = true })<CR>', "search files" }
+      },
+      l = {
+        name = "+file",
+        g = { '<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>', "live grep" }
+      },
+      m = {
+        name ="actions",
+        c = { '<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>', "metals commands" }
+      },
+
+    }
+  })
   map("n", "<leader>gh", [[<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>]])
-  map("n", "<leader>mc", [[<cmd>lua require("telescope").extensions.metals.commands()<CR>]])
   map("n", "<leader>cc", [[<cmd>lua RELOAD("telescope").extensions.coursier.complete()<CR>]])
 
   map("n", "gds", [[<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>]])

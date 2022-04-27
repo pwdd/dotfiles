@@ -7,7 +7,8 @@ local f = require("noite.functions")
 require("noite.plugins")
 require('lualine').setup()
 require('nvim-web-devicons').get_icons()
-require('nvim-tree').setup {}
+require('nvim-tree').setup()
+require('which-key').setup()
 require("noite.lsp").setup()
 require("noite.diagnostic").setup()
 

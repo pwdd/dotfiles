@@ -12,15 +12,17 @@ return require('packer').startup(function(use)
   use {
       'kyazdani42/nvim-tree.lua',
       requires = {
-        'kyazdani42/nvim-web-devicons',
-      }
+        { "folke/which-key.nvim" },
+        { 'kyazdani42/nvim-web-devicons' },
+      },
+      config = require('noite.plugins.nvimtree').setup()
   }
 
   use 'kyazdani42/nvim-web-devicons'
 
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true, theme = 'neon' },
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true, theme = 'catppuccin' },
     config = require('noite.plugins.lualine').setup()
   }
 

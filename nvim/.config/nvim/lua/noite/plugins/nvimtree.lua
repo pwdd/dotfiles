@@ -12,6 +12,15 @@ local setup = function()
       custom = { ".git" },
     },
   }
+
+   require("which-key").register({
+     ["<leader>"] = {
+       n = {
+         name = "+file",
+         o = { "<cmd>NvimTreeToggle<cr>", "Toggle tree view" },
+       },
+     },
+   })
 end
 
 return {
