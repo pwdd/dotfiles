@@ -49,7 +49,7 @@ local setup = function()
     		enabled = true,
     		colored_indent_levels = false,
     	},
-    	dashboard = true,
+    	dashboard = false,
     	neogit = false,
     	vim_sneak = false,
     	fern = false,
@@ -59,8 +59,8 @@ local setup = function()
     	lightspeed = false,
     	ts_rainbow = false,
     	hop = false,
-    	notify = true,
-    	telekasten = true,
+    	notify = false,
+    	telekasten = false,
     	symbols_outline = true,
     }
   }

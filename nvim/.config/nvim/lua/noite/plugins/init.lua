@@ -1,7 +1,7 @@
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use 'rafamadriz/neon'
+  -- use 'rafamadriz/neon'
 
   use({
   	"catppuccin/nvim",
