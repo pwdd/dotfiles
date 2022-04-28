@@ -48,12 +48,20 @@ return require('packer').startup(function(use)
   use 'machakann/vim-sandwich'
   use 'neovim/nvim-lspconfig'
 
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = require("noite.plugins.trouble").setup()
+  }
+
   use({
     'nvim-telescope/telescope.nvim',
     requires = {
       { 'nvim-lua/popup.nvim' },
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzy-native.nvim' },
+      { "folke/which-key.nvim" },
+      { "folke/trouble.nvim" },
     },
     config = require('noite.plugins.telescope').setup(),
   })

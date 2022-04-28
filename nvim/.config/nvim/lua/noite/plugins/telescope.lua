@@ -1,29 +1,40 @@
 local f = require("noite.functions")
+local trouble = require("trouble")
 local map = f.map
 
 local setup = function()
   require("which-key").register({
     ["<leader>"] = {
       f = {
-        name = "+file",
+        name = "telescope",
         f = { '<cmd>lua require("telescope.builtin").find_files({layout_strategy="vertical", hidden = true })<CR>', "search files" }
       },
       l = {
-        name = "+file",
+        name = "telescope",
         g = { '<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>', "live grep" }
       },
       m = {
-        name ="actions",
+        name = "telescope",
         c = { '<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>', "metals commands" }
       },
-
+      g = {
+         name = "telescope",
+         h = { '<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>' },
+         d = {
+           name = telescope,
+           s = { '<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>]]', "document symbols" },
+         },
+         w = {
+           name = telescope,
+           s = { '<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>', "workspace symbols" },
+         }
+      },
+      c = {
+        name = telescope,
+        c = { '<cmd>lua RELOAD("telescope").extensions.coursier.complete()<CR>', "coursier complete" },
+      },
     }
   })
-  map("n", "<leader>gh", [[<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>]])
-  map("n", "<leader>cc", [[<cmd>lua RELOAD("telescope").extensions.coursier.complete()<CR>]])
-
-  map("n", "gds", [[<cmd>lua require("telescope.builtin").lsp_document_symbols()<CR>]])
-  map("n", "gws", [[<cmd>lua require("telescope.builtin").lsp_dynamic_workspace_symbols()<CR>]])
 
   local actions = require("telescope.actions")
 
@@ -53,6 +64,12 @@ local setup = function()
       mappings = {
         n = {
           ["f"] = actions.send_to_qflist,
+        },
+        i = { 
+          ["<c-t>"] = trouble.open_with_trouble 
+        },
+        n = { 
+          ["<c-t>"] = trouble.open_with_trouble 
         },
       },
     },

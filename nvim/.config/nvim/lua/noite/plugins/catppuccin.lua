@@ -28,7 +28,7 @@ local setup = function()
     			information = "underline",
     		},
     	},
-    	lsp_trouble = false,
+    	lsp_trouble = true,
     	cmp = true,
     	lsp_saga = false,
     	gitgutter = false,
