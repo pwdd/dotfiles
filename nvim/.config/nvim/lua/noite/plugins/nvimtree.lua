@@ -8,9 +8,6 @@ local setup = function()
       number = true,
       relativenumber = true,
     },
-    filters = {
-      custom = { ".git" },
-    },
   }
 
    require("which-key").register({

@@ -12,7 +12,7 @@ require('which-key').setup()
 require("noite.lsp").setup()
 require("noite.diagnostic").setup()
 
-vim.cmd[[colorscheme catppuccin]]
+vim.cmd[[colorscheme kanagawa]]
 --cmd[[colorscheme neon]]
 
 g.neon_style = "dark"
