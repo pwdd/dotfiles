@@ -11,11 +11,11 @@ local setup = function()
       },
       l = {
         name = "telescope",
-        g = { '<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>', "live grep" }
+        g = { '<cmd>lua require("telescope.builtin").live_grep({layout_strategy="vertical"})<CR>', "live grep" }
       },
       m = {
         name = "telescope",
-        c = { '<cmd>lua require("telescope.builtin").git_commits({layout_strategy="vertical"})<CR>', "metals commands" }
+        c = { '<cmd>lua require("telescope").extensions.metals.commands()<CR>', "metals commands" }
       },
       g = {
          name = "telescope",
