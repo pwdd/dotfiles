@@ -9,5 +9,6 @@ git config --global user.email $2
 git config --global core.editor $(which nvim)
 git config --global core.excludesfile $HOME/.gitignore
 git config --global credential.helper osxkeychain
+git config --global init.defaultBranch main
 
 cat $HOME/.gitconfig
