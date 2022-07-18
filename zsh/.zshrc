@@ -11,7 +11,7 @@ export PATH="$PATH:/Users/Aina.SilvaPinto/Library/Application Support/Coursier/b
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
 export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
 
-export JAVA_HOME=$JAVA_8_HOME
+export JAVA_HOME=$JAVA_11_HOME
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
